@@ -1,0 +1,24 @@
+# Copyright Daniel Harrison 2023. All Rights Reserved.
+
+cargo_lock
+[[package]]
+name = "foo"
+dependencies = ["bar"]
+
+[[package]]
+name = "bar"
+----
+ok
+
+lints
+[[deny]]
+name = "baz"
+----
+error: unknown crate in lints: baz
+
+lints
+[[deny]]
+name = "foo"
+dependencies = ["baz"]
+----
+error: unknown crate in lints: baz

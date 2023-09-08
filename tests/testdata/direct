@@ -1,0 +1,25 @@
+# Copyright Daniel Harrison 2023. All Rights Reserved.
+
+cargo_lock
+[[package]]
+name = "foo"
+dependencies = ["bar"]
+
+[[package]]
+name = "bar"
+----
+ok
+
+lints
+[[deny]]
+name = "foo"
+dependencies = ["bar"]
+----
+deny: foo -> bar
+
+lints
+[[deny]]
+name = "bar"
+dependencies = ["foo"]
+----
+ok

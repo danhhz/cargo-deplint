@@ -1,0 +1,78 @@
+# Copyright Daniel Harrison 2023. All Rights Reserved.
+
+# Simple path
+cargo_lock
+[[package]]
+name = "foo"
+dependencies = ["bar"]
+
+[[package]]
+name = "bar"
+dependencies = ["baz"]
+
+[[package]]
+name = "baz"
+----
+ok
+
+lints
+[[deny]]
+name = "foo"
+dependencies = ["baz"]
+----
+deny: foo -> bar -> baz
+
+# Complicated paths
+cargo_lock
+[[package]]
+name = "foo"
+dependencies = ["bar", "baz"]
+
+[[package]]
+name = "bar"
+dependencies = ["corge"]
+
+[[package]]
+name = "baz"
+dependencies = ["quux"]
+
+[[package]]
+name = "quux"
+dependencies = ["corge"]
+
+[[package]]
+name = "corge"
+----
+ok
+
+lints
+[[deny]]
+name = "foo"
+dependencies = ["corge"]
+----
+deny: foo -> baz -> quux -> corge
+
+# Disjoint graphs
+cargo_lock
+[[package]]
+name = "foo"
+dependencies = ["bar"]
+
+[[package]]
+name = "bar"
+dependencies = ["baz"]
+
+[[package]]
+name = "baz"
+
+[[package]]
+name = "quux"
+----
+ok
+
+lints
+[[deny]]
+name = "foo"
+dependencies = ["baz"]
+----
+deny: foo -> bar -> baz

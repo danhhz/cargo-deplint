@@ -1,0 +1,22 @@
+# Copyright 2023 Daniel Harrison. All Rights Reserved.
+
+[package]
+name = "cargo-deplint"
+version = "0.1.0"
+authors = ["Daniel Harrison <daniel.harrison@gmail.com>"]
+edition = "2021"
+
+# crates.io stuff
+description = "A utility for enforcing rules about crate dependency graphs"
+repository = "https://github.com/danhhz/cargo-deplint"
+readme = "README.md"
+keywords = ["deps"]
+categories = ["development-tools", "development-tools::cargo-plugins", "development-tools::debugging", "command-line-utilities"]
+license = "Apache-2.0"
+
+[dependencies]
+serde = { version = "1.0.188", features = ["derive"] }
+toml = "0.7.7"
+
+[dev-dependencies]
+datadriven = "0.8.0"
