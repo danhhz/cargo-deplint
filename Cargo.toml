@@ -2,7 +2,7 @@
 
 [package]
 name = "cargo-deplint"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Daniel Harrison <daniel.harrison@gmail.com>"]
 edition = "2021"
 
@@ -11,7 +11,7 @@ description = "A utility for enforcing rules about crate dependency graphs"
 repository = "https://github.com/danhhz/cargo-deplint"
 readme = "README.md"
 keywords = ["deps"]
-categories = ["development-tools", "development-tools::cargo-plugins", "development-tools::debugging", "command-line-utilities"]
+categories = ["development-tools", "development-tools::cargo-plugins", "command-line-utilities"]
 license = "Apache-2.0"
 
 [dependencies]
